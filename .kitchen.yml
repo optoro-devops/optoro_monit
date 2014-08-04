@@ -1,0 +1,20 @@
+---
+driver:
+  name: docker
+<% if ENV['DOCKER_HOST'] %>
+  socket: <%= ENV['DOCKER_HOST'] %>
+<% end %>
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+    driver_config:
+      provision_command: apt-get install net-tools
+
+suites:
+  - name: default
+    run_list:
+      - recipe[optoro_monit::default]
+    attributes:

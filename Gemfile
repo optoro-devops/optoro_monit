@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'berkshelf'
+gem 'test-kitchen'
+gem 'kitchen-vagrant'
+gem 'kitchen-docker'
+gem 'chefspec'
+gem 'serverspec'
+gem 'chef'
+gem 'chef-rewind'
+gem 'foodcritic'
+gem 'thor-foodcritic'

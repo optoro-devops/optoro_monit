@@ -1,0 +1,10 @@
+DEPENDENCIES
+  monit (~> 0.7.1)
+  optoro_monit
+    path: .
+    metadata: true
+
+GRAPH
+  monit (0.7.1)
+  optoro_monit (0.1.0)
+    monit (~> 0.7.1)
