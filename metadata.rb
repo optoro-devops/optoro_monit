@@ -1,6 +1,6 @@
 name             'optoro_monit'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Optoro'
+maintainer_email 'devops@optoro.com'
 license          'All rights reserved'
 description      'Installs/Configures optoro_monit'
 long_description 'Installs/Configures optoro_monit'
