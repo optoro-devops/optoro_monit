@@ -22,9 +22,3 @@ rewind :template => '/etc/monit/monitrc' do
   source 'optoro-monitrc.erb'
   cookbook_name 'optoro_monit'
 end
-
-cookbook_file '/etc/init.d/monit' do
-  source 'monit-init'
-  action :create
-  notifies :restart, 'service[monit]', :delayed
-end
