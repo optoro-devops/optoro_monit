@@ -12,4 +12,4 @@ node.override['monit']['mailserver']['host'] = 'mail-temp-internal.optoro.com'
 node.override['monit']['notify_email'] = 'sysadmin@optoro.com'
 node.override['monit']['port'] = '2812'
 
-node.default['monit']['allow'] << 'admin:monit'
+node.default['monit']['allow'] = ['admin:monit']

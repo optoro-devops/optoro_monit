@@ -39,7 +39,7 @@ cookbook_file '/etc/init/monit.conf' do
   group "root"
   mode "0644"
   source "monit-upstart"
-  #notifies :run, "execute[restart-monit]", :immediately
+  notifies :run, "execute[restart-monit]", :immediately
 end
 
 service 'monit' do
