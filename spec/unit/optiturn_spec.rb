@@ -9,7 +9,7 @@ describe 'optoro_monit::optiturn' do
       group: 'root',
       source: 'inventory.monitrc.erb'
     )
-    expect(chef_run.template('/etc/monit/conf.d/inventory.monitrc')).to notify('service[monit]').to(:restart).delayed
+    expect(chef_run.template('/etc/monit/conf.d/inventory.monitrc')).to notify('execute[restart-monit]').to(:run).immediately
   end
 
   it 'should create the nginx.monitrc file' do
@@ -19,6 +19,6 @@ describe 'optoro_monit::optiturn' do
       mode: '600',
       source: 'nginx.monitrc.erb'
     )
-    expect(chef_run.template('/etc/monit/conf.d/nginx.monitrc')).to notify('service[monit]').to(:restart).delayed
+    expect(chef_run.template('/etc/monit/conf.d/nginx.monitrc')).to notify('execute[restart-monit]').to(:run).immediately
   end
 end

@@ -7,23 +7,16 @@ describe 'optoro_monit::default' do
     stub_command('which monit').and_return('/usr/bin/monit')
   end
 
-  it 'should include the community monit cookbook by default' do
-    expect(chef_run).to include_recipe 'monit::default'
-  end
-
-  it 'should create the init file' do
-    expect(chef_run).to create_cookbook_file('/etc/init.d/monit')
+  it 'should create the upstart file' do
+    expect(chef_run).to create_cookbook_file('/etc/init/monit.conf')
   end
 
   it 'should start the monit service' do
     expect(chef_run).to start_service('monit')
   end
 
-  it 'should override the default monitrc template and use the custom optoro one' do
-    expect(chef_run).to_not create_template('/etc/monit/monitrc').with(
-      source: 'monitrc.conf.erb'
-    )
-    expect(chef_run.template('/etc/monit/monitrc')).to notify('service[monit]').to(:restart).delayed
+  it 'should restart monit if the monitrc is changed' do
+    expect(chef_run.template('/etc/monit/monitrc')).to notify('execute[restart-monit]').to(:run).immediately
   end
 
   it 'should create the monitrc configuration file' do

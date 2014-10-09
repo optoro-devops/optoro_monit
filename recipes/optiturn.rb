@@ -7,7 +7,8 @@ template '/etc/monit/conf.d/inventory.monitrc' do
   group 'root'
   mode '600'
   source 'inventory.monitrc.erb'
-  notifies :restart, 'service[monit]', :delayed
+  #notifies :restart, 'service[monit]', :delayed
+  notifies :run, "execute[restart-monit]", :immediately
 end
 
 template '/etc/monit/conf.d/nginx.monitrc' do
@@ -16,5 +17,5 @@ template '/etc/monit/conf.d/nginx.monitrc' do
   group 'root'
   mode '600'
   source 'nginx.monitrc.erb'
-  notifies :restart, 'service[monit]', :delayed
+  notifies :run, "execute[restart-monit]", :immediately
 end
