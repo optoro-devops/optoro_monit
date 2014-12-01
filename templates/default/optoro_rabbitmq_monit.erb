@@ -1,7 +1,0 @@
-CHECK PROCESS rabbitmq-server
-  matching "rabbitmq-server"
-  GROUP rabbitmq
-  START PROGRAM "/etc/init.d/rabbitmq-server start"
-  STOP PROGRAM "/etc/init.d/rabbitmq-server stop"
-  IF DOES NOT EXIST FOR 3 CYCLES THEN RESTART
-  IF FAILED PORT 5671 4 TIMES WITHIN 6 CYCLES THEN RESTART
