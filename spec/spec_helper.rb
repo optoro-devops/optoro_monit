@@ -3,7 +3,8 @@ require 'chef/rewind'
 require 'chefspec'
 require 'chefspec/berkshelf'
 
-RSpec.configure do |config|
-  config.platform = 'ubuntu'
-  config.version = '14.04'
-end
+ChefSpec::Coverage.start!
+
+require File.expand_path('../resources.rb', __FILE__)
+require File.expand_path('../helpers.rb', __FILE__)
+require File.expand_path('../matchers.rb', __FILE__)

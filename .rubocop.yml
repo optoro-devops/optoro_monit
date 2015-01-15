@@ -1,0 +1,8 @@
+LineLength:
+  Enabled: false
+HashSyntax:
+  Enabled: false
+Next:
+  Enabled: false
+IfUnlessModifier:
+  Enabled: false
