@@ -1,7 +1,7 @@
 
 include_recipe 'optoro_monit::default'
 
-template '/etc/monit/conf.d/inventory.monitrc' do
+template '/etc/monit/conf.d/inventory.conf' do
   action :create
   owner 'root'
   group 'root'
@@ -10,7 +10,7 @@ template '/etc/monit/conf.d/inventory.monitrc' do
   notifies :restart, 'service[monit]', :delayed
 end
 
-template '/etc/monit/conf.d/nginx.monitrc' do
+template '/etc/monit/conf.d/nginx.conf' do
   action :create
   owner 'root'
   group 'root'
