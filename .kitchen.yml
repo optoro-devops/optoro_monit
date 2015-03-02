@@ -24,6 +24,8 @@ suites:
         mailserver:
           host: localhost
           port: 25
+        mail_format:
+          from: monit@localhost
   - name: rabbitmq
     encrypted_data_bag_secret_key_path: "test/integration/encrypted_data_bag_secret"
     run_list:
@@ -34,3 +36,5 @@ suites:
         mailserver:
           host: localhost
           port: 25
+        mail_format:
+          from: monit@localhost
