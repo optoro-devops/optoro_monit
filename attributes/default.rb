@@ -5,7 +5,7 @@ node.default['monit']['statefile'] = '/var/.monit.state'
 
 # override default attributes from the community monit cookbook
 node.override['monit']['poll_period'] = '120'
-node.override['monit']['poll_start_delay'] = '240'
+node.override['monit']['poll_start_delay'] = 0
 node.override['monit']['logfile'] = '/var/optoro/log/monit.log'
 node.override['monit']['logfile'] = "#{node['monit']['logdirectory']}/monit.log"
 node.override['monit']['mailserver']['host'] = 'mail-temp-internal.optoro.com'
