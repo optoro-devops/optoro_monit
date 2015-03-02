@@ -29,48 +29,21 @@ describe 'optoro_monit::default' do
         #   expect(chef_run).to run_bash('disabling init.d script for monit')
         # end
 
-        it 'should create the upstart file' do
-          expect(chef_run).to create_cookbook_file('/etc/init/monit.conf').with(
-            user: 'root',
-            group: 'root',
-            mode: '0644'
-          )
-        end
-
         it 'should start the monit service' do
-          expect(chef_run).to start_service('monit').with(
-            provider: Chef::Provider::Service::Upstart
-          )
-        end
-
-        it 'should allow monit to startup' do
-          expect(chef_run).to create_template('/etc/default/monit').with(
-            owner: 'root',
-            group: 'root',
-            mode: '0644'
-          )
-        end
-
-        it 'should notify a monit restart when creating the /etc/default/monit file' do
-          resource = chef_run.template('/etc/default/monit')
-          expect(resource).to notify('execute[restart-monit]').to(:run).immediately
+          expect(chef_run).to start_service('monit')
         end
 
         it 'should create the monitrc configuration file' do
           expect(chef_run).to create_template('/etc/monit/monitrc').with(
             owner: 'root',
             group: 'root',
-            source: 'optoro-monitrc.erb'
+            source: 'monitrc.erb'
           )
         end
 
         it 'should restart monit if the monitrc is changed' do
           resource = chef_run.template('/etc/monit/monitrc')
-          expect(resource).to notify('execute[restart-monit]').to(:run).immediately
-        end
-
-        it 'should delete the original init script for monit' do
-          expect(chef_run).to delete_file('/etc/init.d/monit')
+          expect(resource).to notify('service[monit]').to(:restart).delayed
         end
       end
     end

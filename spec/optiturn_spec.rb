@@ -22,7 +22,7 @@ describe 'optoro_monit::optiturn' do
 
         it 'should notify monit to restart if the inventory.monitrc file is touched' do
           resource = chef_run.template('/etc/monit/conf.d/inventory.monitrc')
-          expect(resource).to notify('execute[restart-monit]').to(:run).immediately
+          expect(resource).to notify('service[monit]').to(:restart).delayed
         end
 
         it 'should create the nginx.monitrc file' do
@@ -36,7 +36,7 @@ describe 'optoro_monit::optiturn' do
 
         it 'should notify monit to restart if the nginx.monitrc file is touched' do
           resource = chef_run.template('/etc/monit/conf.d/nginx.monitrc')
-          expect(resource).to notify('execute[restart-monit]').to(:run).immediately
+          expect(resource).to notify('service[monit]').to(:restart).delayed
         end
       end
     end

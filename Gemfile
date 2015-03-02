@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf', '~> 3.2.1'
+gem 'chef-rewind'
 
 group :integration do
   gem 'test-kitchen', '~> 1.3.0'
