@@ -1,4 +1,4 @@
-# Serverspec tests for rabbitmq sensu configuration
+# Serverspec tests for rabbitmq configuration
 require 'spec_helper'
 
 describe 'Monit RabbitMQ configuration' do

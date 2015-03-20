@@ -38,3 +38,30 @@ suites:
           port: 25
         mail_format:
           from: monit@localhost
+  - name: redis
+    encrypted_data_bag_secret_key_path: "test/integration/encrypted_data_bag_secret"
+    run_list:
+      - recipe[optoro_monit::redis]
+    attributes:
+      redisio:
+        servers:
+          - port: 6379
+      monit:
+        poll_start_delay: 0
+        mailserver:
+          host: localhost
+          port: 25
+        mail_format:
+          from: monit@localhost
+  - name: sentinel
+    encrypted_data_bag_secret_key_path: "test/integration/encrypted_data_bag_secret"
+    run_list:
+      - recipe[optoro_monit::sentinel]
+    attributes:
+      monit:
+        poll_start_delay: 0
+        mailserver:
+          host: localhost
+          port: 25
+        mail_format:
+          from: monit@localhost

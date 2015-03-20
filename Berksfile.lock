@@ -6,5 +6,5 @@ DEPENDENCIES
 
 GRAPH
   monit (0.7.5)
-  optoro_monit (0.2.0)
+  optoro_monit (0.2.1)
     monit (>= 0.0.0)
