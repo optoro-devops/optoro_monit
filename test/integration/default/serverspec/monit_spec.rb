@@ -15,6 +15,6 @@ describe 'Monit' do
   end
 
   it 'monitors the server' do
-    expect(command('monit status | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
+    expect(command('monit status 2>/dev/null | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
   end
 end

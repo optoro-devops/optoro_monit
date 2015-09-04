@@ -7,6 +7,6 @@ describe 'Monit RabbitMQ configuration' do
   end
 
   it 'is monitored' do
-    expect(command('monit status | grep -A2 rabbitmq-server | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
+    expect(command('monit status 2>/dev/null | grep -A2 rabbitmq-server | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
   end
 end
