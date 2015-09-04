@@ -5,6 +5,7 @@ describe 'Monit redis configuration' do
     expect(file('/etc/monit/conf.d/redis6379.conf')).to be_file
   end
 
+  sleep 30
   it 'is monitored' do
     expect(command('monit status 2>/dev/null | grep -A2 redis6379 | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
   end
