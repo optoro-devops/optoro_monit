@@ -14,6 +14,7 @@ describe 'Monit' do
     expect(file('/etc/monit/monitrc')).to be_file
   end
 
+  sleep 30
   it 'monitors the server' do
     expect(command('monit status 2>/dev/null | egrep "monitoring status" | awk "{ print $3 }"').stdout).to match('Monitored')
   end
