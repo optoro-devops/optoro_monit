@@ -1,5 +1,4 @@
 require 'chef'
-require 'chef/rewind'
 require 'chefspec'
 require 'chefspec/berkshelf'
 
