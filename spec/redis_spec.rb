@@ -16,7 +16,7 @@ describe 'optoro_monit::redis' do
 
           [6379, 6380].each do |port|
             it "creates monit configuration for redis service on port #{port}" do
-              expect(chef_run).to create_template("/etc/monit/conf.d/redis#{port}.conf").with(
+              expect(chef_run).to create_template("/etc/monit/conf.d/#{port}.conf").with(
                 owner: 'root',
                 group: 'root',
                 source: 'redis.monitrc.erb'
@@ -24,7 +24,7 @@ describe 'optoro_monit::redis' do
             end
 
             it "should notify monit to restart if the redis#{port}.monitrc file is touched" do
-              resource = chef_run.template("/etc/monit/conf.d/redis#{port}.conf")
+              resource = chef_run.template("/etc/monit/conf.d/#{port}.conf")
               expect(resource).to notify('service[monit]').to(:restart).delayed
             end
           end

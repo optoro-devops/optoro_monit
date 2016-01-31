@@ -4,7 +4,7 @@ default['monit']['idfile'] = '/var/.monit.id'
 default['monit']['statefile'] = '/var/.monit.state'
 
 # override default attributes from the community monit cookbook
-default['monit']['poll_period'] = '120'
+default['monit']['poll_period'] = 120
 default['monit']['poll_start_delay'] = 0
 default['monit']['logfile'] = '/var/optoro/log/monit.log'
 default['monit']['logfile'] = "#{node['monit']['logdirectory']}/monit.log"

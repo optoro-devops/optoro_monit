@@ -1,10 +1,6 @@
 include_recipe 'optoro_monit'
 
-template '/etc/monit/conf.d/sentinel.conf' do
-  action :create
-  owner 'root'
-  group 'root'
-  mode '600'
-  source 'sentinel.monitrc.erb'
-  notifies :restart, 'service[monit]', :delayed
+monitrc 'sentinel' do
+  template_cookbook 'optoro_monit'
+  template_source 'sentinel.monitrc.erb'
 end

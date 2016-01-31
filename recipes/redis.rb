@@ -1,13 +1,9 @@
 include_recipe 'optoro_monit'
 
 node['redisio']['servers'].each do |server|
-  template "/etc/monit/conf.d/redis#{server['port']}.conf" do
-    action :create
-    owner 'root'
-    group 'root'
-    mode '600'
-    source 'redis.monitrc.erb'
-    variables(port: server['port'])
-    notifies :restart, 'service[monit]', :delayed
+  monitrc server['port'] do
+    template_cookbook 'optoro_monit'
+    template_source 'redis.monitrc.erb'
+    variables port: server['port']
   end
 end

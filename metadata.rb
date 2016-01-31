@@ -4,6 +4,6 @@ maintainer_email 'devops@optoro.com'
 license 'MIT'
 description 'Installs/Configures optoro_monit'
 long_description 'Installs/Configures optoro_monit'
-version '0.2.6'
+version '0.2.7'
 
 depends 'monit'
