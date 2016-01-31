@@ -29,7 +29,6 @@ Installs/Configures optoro_monit
 # Recipes
 
 * optoro_monit::default
-* optoro_monit::optiturn
 * optoro_monit::rabbitmq
 * optoro_monit::redis
 * optoro_monit::sentinel
